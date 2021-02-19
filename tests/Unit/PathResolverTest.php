@@ -13,13 +13,16 @@ class PathResolverTest extends \PHPUnit\Framework\TestCase
      * @dataProvider absolutePathDataProvider
      * @dataProvider relativePathDataProvider
      */
-    public function testResolve(string $basePath, string $path, string $expectedPath)
+    public function testResolve(string $basePath, string $path, string $expectedPath): void
     {
         $pathResolver = new PathResolver();
 
         $this->assertSame($expectedPath, $pathResolver->resolve($basePath, $path));
     }
 
+    /**
+     * @return array[]
+     */
     public function emptyPathDataProvider(): array
     {
         return [
@@ -36,6 +39,9 @@ class PathResolverTest extends \PHPUnit\Framework\TestCase
         ];
     }
 
+    /**
+     * @return array[]
+     */
     public function absolutePathDataProvider(): array
     {
         return [
@@ -47,6 +53,9 @@ class PathResolverTest extends \PHPUnit\Framework\TestCase
         ];
     }
 
+    /**
+     * @return array[]
+     */
     public function relativePathDataProvider(): array
     {
         return [
