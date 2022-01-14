@@ -22,14 +22,12 @@
         }
     },
     "scripts": {
-        "cs-ecs": "./vendor/bin/ecs check src tests --ansi --no-progress-bar --config ecs.php",
+        "cs-fixer-dry-run": "docker run --rm $(if [ ! -z \"${NO_TTY}\" ]; then echo \"\"; else echo \"-t\"; fi) -w=/app -v ${PWD}:/app oskarstark/php-cs-fixer-ga:latest --allow-risky=yes --dry-run --verbose --show-progress none",
+        "cs-fixer-fix": "docker run --rm $(if [ ! -z \"${NO_TTY}\" ]; then echo \"\"; else echo \"-t\"; fi) -w=/app -v ${PWD}:/app oskarstark/php-cs-fixer-ga:latest --allow-risky=yes --diff",
         "cs-phpcs": "./vendor/bin/phpcs",
         "cs": [
-            "@cs-ecs",
+            "@cs-fixer-dry-run",
             "@cs-phpcs"
-        ],
-        "cs-fix": [
-            "./vendor/bin/ecs check src tests --ansi --config ecs.php --fix"
         ],
         "static-analysis": "./vendor/bin/phpstan analyse",
         "test": "./vendor/bin/phpunit --colors=always",
@@ -40,15 +38,11 @@
         ]
     },
     "require": {
-        "php": ">=7.4|^8"
+        "php": "^7.4|^8.0"
     },
     "require-dev": {
         "phpstan/phpstan": "^0.12.77",
         "phpunit/phpunit": "^9.5",
-        "squizlabs/php_codesniffer": "^3.5",
-        "symplify/easy-coding-standard": "^9.1"
-    },
-    "config": {
-        "sort-packages": true
+        "squizlabs/php_codesniffer": "^3.5"
     }
 }
