@@ -38,9 +38,9 @@ jobs:
           php-version: ${{ matrix.php }}
 
       - name: Download dependencies
-        uses: php-actions/composer@v2
+        uses: php-actions/composer@v6
         with:
-          args: --ignore-platform-reqs --quiet
+          php_version: ${{ matrix.php }}
 
       - name: Run PHPCS
         run: composer cs-phpcs

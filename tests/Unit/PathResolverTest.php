@@ -21,7 +21,7 @@ class PathResolverTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @return array[]
+     * @return array<mixed>
      */
     public function emptyPathDataProvider(): array
     {
@@ -40,7 +40,7 @@ class PathResolverTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @return array[]
+     * @return array<mixed>
      */
     public function absolutePathDataProvider(): array
     {
@@ -54,7 +54,7 @@ class PathResolverTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @return array[]
+     * @return array<mixed>
      */
     public function relativePathDataProvider(): array
     {
